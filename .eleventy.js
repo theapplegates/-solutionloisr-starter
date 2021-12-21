@@ -1,5 +1,5 @@
-// const Image = require("@11ty/eleventy-img");  // Uncomment if you need image optimisation. Istall '@11ty/eleventy-img' as dev
-// require("dotenv").config;  // Uncomment if you need .env variables. Install 'dotenv' package as dev
+const Image = require("@11ty/eleventy-img");  // Uncomment if you need image optimisation. Istall '@11ty/eleventy-img' as dev
+equire("dotenv").config;  // Uncomment if you need .env variables. Install 'dotenv' package as dev
 const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
 
 const markdownIt = require("markdown-it");
@@ -20,21 +20,21 @@ module.exports = (config) => {
   config.addPlugin(metagen);
 
   // Uncomment if you need image optimisation
-  // config.addAsyncShortcode("image", async (src, alt, sizes) => {
-  //   let metadata = await Image(src, {
-  //     widths: [320, 640, 960, 1280, 1600, 2400],
-  //     formats: ["webp", "avif", "jpeg"],
-  //     outputDir: "./dist/images",
-  //     urlPath: "/images/"
-  //   }),
+   config.addAsyncShortcode("image", async (src, alt, sizes) => {
+     let metadata = await Image(src, {
+       widths: [320, 640, 960, 1280, 1600, 2400],
+       formats: ["avif", "webp", "jpeg"],
+       outputDir: "./dist/images",
+      urlPath: "/images/"
+     }),
 
-  //   return Image.generateHTML(metadata, {
-  //     alt,
-  //     sizes,
-  //     loading: "lazy",
-  //     decoding: "async"
-  //   })
-  // })
+     return Image.generateHTML(metadata, {
+       alt,
+       sizes,
+       loading: "lazy",
+       decoding: "async"
+     })
+   })
 
   config.setBrowserSyncConfig({
     callbacks: {
